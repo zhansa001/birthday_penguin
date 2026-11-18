@@ -1,25 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>A Birthday Surprise!</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
+    <audio id="walking-sound" src="assets/audio/u_3x9ga8wevj-walking-sound-effect-272246.mp3"></audio>
+    <audio id="button-sound" src="assets/audio/universfield-birthday-party-horn-250238.mp3"></audio>
 
-    <h1>Happy Birthday! 🎂</h1>
-
-    <div id="penguin">
-        🐧
+    <div id="start-screen">
+        <h1>Sorry for bothering you last month.</h1>
+        <h1>I hope you like this</h1>
+        <button id="start-button">Start</button>
     </div>
 
-    <p>Waddle waddle! It's your special day!</p>
+    <main class="birthday-container">
 
-    <button id="birthdayBtn">Celebrate!</button>
+        <h1 id="greeting">Hey You! 🫵</h1>
 
-    <script src="script.js"></script>
+        <div class="penguin-area">
+
+            <img id="penguin" src="assets/images/otomusu-penguin-walk.gif" alt="Pixel Penguin Walk">
+
+            <div id="speech-bubble">
+                I have something for you!
+            </div>
+
+        </div>
+        
+        <a href="birthday.html" id="surprise-button">Click me! 🎁</a>
+        
+        <p class="instruction">I'm waiting...</p>
+
+    </main>
+
+    <script src="assets/js/script.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,356 @@
+
+/* General page styling */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#c8e9ff, #fce4ec);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Main birthday container */
+
+.birthday-container {
+    text-align: center;
+}
+
+/* Heading */
+
+h1 {
+    color: #426b91;
+    font-size: 80px;
+}
+
+/* Penguin area */
+
+.penguin-area {
+    position: relative;
+    height: 200px;
+}
+
+/* Penguin animation */
+
+#penguin {
+    width: 300px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: -150px;
+}
+
+
+/* Walking from left to center */
+
+@keyframes walkIn {
+    from {
+        left: -150px;
+    }
+
+    to {
+        left: calc(50% - 90px);
+    }
+}
+
+/* Show "Hey You" after the penguin is in the middle */
+
+#greeting {
+    opacity: 0;
+    animation: appear 1s ease forwards;
+    animation-delay: 6s;
+}
+
+/* Speech bubble */
+
+#speech-bubble {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    opacity: 0;
+    animation: appear 1s ease forwards;
+    animation-delay: 8s;
+}
+
+/* Speech bubble appearance */
+
+@keyframes appear {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Instruction */
+
+.instruction {
+    color: #426b91;
+    font-size: 18px;
+    opacity: 0;
+    animation: appear 1s ease forwards;
+    animation-delay: 15s;
+}
+
+/* Button */
+#start-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(#c8e9ff, #fce4ec);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#start-screen.hidden {
+    display: none;
+}
+
+#start-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #ff91b5;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+}
+
+#surprise-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #ff91b5;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+
+    margin-top: 20px;
+
+    opacity: 0;
+    animation: appear 1s ease forwards;
+    animation-delay: 10s;
+}
+
+#surprise-button:hover {
+    background-color: #ff6f9f;
+}
+
+/* Birthday Page */
+
+.birthday-page {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(#c8e9ff, #fce4ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.birthday-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.birthday-decorationsn{
+    display: flex;
+    justify-content: center;
+}
+
+/* Present */
+.present {
+    position: relative;
+    overflow: visible;
+
+    width: 240px;
+    height: 220px;
+    margin: 0 auto 35px;
+    animation: presentAppear 0.8s ease forwards;
+}
+
+.present-content {
+    position: absolute;
+    /* bottom: -10px; */
+    top: 50%;
+    left: 50%;
+    width: min(96vw, 1000px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 5;
+
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 70px));
+    animation: popOut 0.8s ease-out 1.8s forwards;
+}
+
+.present-box {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 220px;
+    height: 170px;
+    background: #ff79a8;
+    border: 5px solid #e85b8b;
+    border-radius: 8px;
+    box-sizing: border-box;
+
+    z-index: 1;
+}
+
+/* Vertical */
+
+.present-ribbon {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background: #ffe27a;
+    left: 95px;
+}
+
+/* Horizontal */
+
+.present-box::after {
+    content: "";
+    position: absolute;
+    top: 65px;
+    width: 100%;
+    height: 25px;
+    background: #ffe27a;
+    left: 0;
+}
+
+/* Bow */
+
+.present-lid::before,
+.present-lid::after {
+    content: "";
+    position: absolute;
+    top: -55px;
+    width: 55px;
+    height: 50px;
+    background: #ffe27a;
+    border: 5px solid #e8bd55;
+    border-radius: 50% 50% 10% 50%;
+
+    z-index: 3;
+}
+
+.present-lid::before {
+    left: 55px;
+    transform: rotate(-5deg);
+}
+
+.present-lid::after {
+    left: 121px;
+    transform: rotate(100deg);
+}
+
+/* Lid */
+
+.present-lid {
+    position: absolute;
+    width: 240px;
+    height: 40px;
+    background: #ff518b;
+    border: 5px solid #e85b8b;
+    border-radius: 8px;
+    top: 25px;
+    left: 0;
+    z-index: 4;
+    transform-origin: left bottom;
+    animation: openPresent 1s ease 1.2s forwards;
+}
+
+@keyframes presentAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes openPresent {
+    to {
+        transform: translate(-45px, -45px) rotate(-35deg);
+    }
+}
+
+/* Items in the box */
+.birthday-title {
+    max-width: 96vw;
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.1;
+}
+
+.penguin-wrapper {
+    position: relative;
+}
+
+.birthday-penguin {
+    display: block;
+    width: auto;
+    height: min(58vh, 560px);
+    max-width: 80vw;
+}
+
+.birthday-cake {
+    position: absolute;
+    left: 34%;
+    top: 56%;
+    z-index: 2;
+    font-size: clamp(3rem, 10vw, 6rem);
+    transform: rotate(12deg);
+}
+
+#confetti-container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: var(--size);
+    height: calc(var(--size) *1.6);
+    animation: confettiFall var(--duration) linear var(--delay) forwards;
+}
+
+@keyframes popOut {
+    to {
+        opacity: 1;
+        transform: translate(-50%, -285px);
+    }
+}
+
+@keyframes confettiFall {
+    from {
+        transform: translateY(-5vh) rotate(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(var(--drift), 110vh) rotate(720deg);
+        opacity: 0.8;
+    }
+}
