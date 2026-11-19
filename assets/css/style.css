@@ -364,3 +364,85 @@ h1 {
         opacity: 0.8;
     }
 }
+
+/* Mobile override */
+@media (max-width: 600px) {
+    body {
+        min-height: 100svh;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 9vw, 3.5rem);
+    }
+
+    .birthday-container {
+        width: 100%;
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    .penguin-area {
+        width: 100%;
+        height: 180px;
+    }
+
+    #penguin {
+        width: 60vw;
+        max-width: 240px;
+        left: -65%;
+    }
+
+    @keyframes walkIn {
+        from {
+            left: -65%;
+        }
+
+        to {
+            left: 20%;
+        }
+    }
+
+    #speech-bubble {
+        left: 50%;
+        max-width: 80vw;
+        box-sizing: border-box;
+        transform: translateX(-50%);
+    }
+
+    #start-screen {
+        padding: 16px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    #start-screen h1 {
+        margin: 12px 0;
+    }
+
+    #start-button,
+    #surprise-button,
+    #replay-button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    .birthday-title {
+        font-size: clamp(1.6rem, 7vw, 2.5rem);
+    }
+
+    .birthday-penguin {
+        height: min(42vh, 360px);
+        max-width: 78vw;
+    }
+
+    .birthday-cake {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    @keyframes popOut {
+        to {
+            opacity: 1;
+            transform: translate(-50%, -200px);
+        }
+    }
+}
