@@ -3,7 +3,7 @@ const start_button = document.getElementById("start-button");
 const penguin = document.getElementById("penguin");
 const surpriseButton = document.getElementById("surprise-button");
 const walking = document.getElementById("walking-sound");
-const openSound = document.getElementById("open-sound");
+const button = document.getElementById("button-sound");
 
 start_button.addEventListener("click", function() {
     //Hides it
@@ -27,6 +27,16 @@ penguin.addEventListener("animationend", function() {
     penguin.src = "assets/images/otomusu-penguin-idle.gif";
 });
 
-surpriseButton.addEventListener("click", function() {
-    buttonSound.play();
+surpriseButton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    button.currentTime = 0;
+    button.addEventListener("ended", () => {
+        window.location.href = surpriseButton.href;
+    }, { once: true });
+
+    button.play().catch((error) => {
+        console.error("Could not play the button sound:", error);
+        window.location.href = surpriseButton.href;
+    });
 });

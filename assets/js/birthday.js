@@ -2,20 +2,31 @@ const confettiContainer = document.getElementById("confetti-container");
 const presentLid = document.querySelector(".present-lid");
 const openSound = document.getElementById("open-sound");
 
-if (!presentLid || !(openSound instanceof HTMLAudioElement)) {
-    throw new Error("Missing present lid or opening sound");
+// Replay
+const replayBtn = document.getElementById("replay-button");
+const present = document.querySelector(".present");
+const presentContent = document.querySelector(".present-content");
+
+let replaying = false;
+
+// Starting the functions
+
+if (!confettiContainer ||!presentLid || !(openSound instanceof HTMLAudioElement) || !replayBtn) {
+    throw new Error("Missing confetti element, present lid or opening sound or replay button");
 }
 
 presentLid.addEventListener("animationstart", (event) => {
-    if (event.animationName !== "openPresent") return;
+    if (event.animationName !== "openPresent" || replaying) return;
 
     openSound.play().catch((error) => {
         console.error("Chrome blocked the opening sound:", error);
     });
 });
 
-if (!confettiContainer) {
-    throw new Error("Missing #confetti-container element");
+function replayCelebration(element) {
+    element.style.animation = "none";
+    void element.offsetWidth;
+    element.style.animation = "";
 }
 
 function launchConfetti() {
@@ -39,3 +50,25 @@ function launchConfetti() {
 }
 
 window.setTimeout(launchConfetti, 1800);
+
+replayBtn.addEventListener("click", function() {
+    replaying = true;
+
+    openSound.pause();
+    openSound.currentTime = 0;
+    openSound.play().catch((error) => {
+        console.error("Could not replay the opening sound:", error);
+    });
+
+    confettiContainer.replaceChildren();
+
+    replayCelebration(presentLid);
+    replayCelebration(presentContent);
+    replayCelebration(present);
+
+    window.setTimeout(launchConfetti, 1800);
+
+    window.setTimeout(() => {
+        replaying = false;
+    }, 2500);
+});
