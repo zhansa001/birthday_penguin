@@ -59,8 +59,11 @@ h1 {
 
 #greeting {
     opacity: 0;
-    animation: appear 1s ease forwards;
-    animation-delay: 6s;
+
+}
+
+#greeting.show {
+    animation: appear 1s ease 0.5s forwards;
 }
 
 /* Speech bubble */
@@ -73,8 +76,10 @@ h1 {
     top: 0;
     left: 50%;
     opacity: 0;
-    animation: appear 1s ease forwards;
-    animation-delay: 8s;
+}
+
+#speech-bubble.show {
+    animation: appear 1s ease 2s forwards;
 }
 
 /* Speech bubble appearance */
@@ -91,8 +96,10 @@ h1 {
     color: #426b91;
     font-size: 18px;
     opacity: 0;
-    animation: appear 1s ease forwards;
-    animation-delay: 15s;
+}
+
+.instruction.show {
+    animation: appear 1s ease 10s forwards;
 }
 
 /* Button */
@@ -136,8 +143,10 @@ h1 {
     margin-top: 20px;
 
     opacity: 0;
-    animation: appear 1s ease forwards;
-    animation-delay: 10s;
+}
+
+#surprise-button.show {
+    animation: appear 1s ease 3.5s forwards;
 }
 
 #surprise-button:hover {

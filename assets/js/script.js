@@ -22,9 +22,12 @@ start_button.addEventListener("click", function() {
 
 // Wait until the penguin finishes walking
 penguin.addEventListener("animationend", function() {
-
     // Change to idle penguin
     penguin.src = "assets/images/otomusu-penguin-idle.gif";
+    document.getElementById("greeting").classList.add("show");
+    document.getElementById("speech-bubble").classList.add("show");
+    document.querySelector(".instruction").classList.add("show");
+    surpriseButton.classList.add("show");
 });
 
 surpriseButton.addEventListener("click", (event) => {
